@@ -1,5 +1,7 @@
 #include <malloc.h>
 
+#include "gctruck.h"
+
 typedef struct trackedptr_node_s {
 	void** trackedptr;
 	struct trackedptr_node_s* next;
@@ -12,3 +14,12 @@ typedef struct allocated_node_s {
 
 trackedptr_node_t* ptrlist;
 allocated_node_t* alloclist;
+
+void* gc_mark(void** ptrtotrack) {
+	gc_collect();
+	// TODO
+}
+
+void gc_collect() {
+	// TODO
+}
