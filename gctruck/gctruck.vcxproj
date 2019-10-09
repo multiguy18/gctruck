@@ -151,7 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="gctruck.cpp" />
+    <ClCompile Include="gctest.c" />
+    <ClCompile Include="gctruck.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gctruck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
