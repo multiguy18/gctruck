@@ -12,12 +12,25 @@ typedef struct allocated_node_s {
 	struct allocated_node_s* next;
 } allocated_node_t;
 
-trackedptr_node_t* ptrlist;
-allocated_node_t* alloclist;
+trackedptr_node_t* ptrlist = NULL;
+allocated_node_t* alloclist = NULL;
 
 void* gc_mark(void** ptrtotrack) {
 	gc_collect();
-	// TODO
+	
+	trackedptr_node_t *ptrnode = (trackedptr_node_t*)malloc(sizeof(trackedptr_node_t));
+	ptrnode->trackedptr = ptrtotrack;
+
+	if (!ptrlist) {
+		ptrnode->next = ptrnode;
+		ptrlist = ptrnode;
+	}
+	else {
+		trackedptr_node_t* oldnext = ptrlist->next;
+		ptrlist->next = ptrnode;
+		ptrlist->next->next = oldnext;
+		ptrlist = ptrlist->next; 
+	}
 }
 
 void gc_collect() {

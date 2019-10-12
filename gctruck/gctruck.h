@@ -6,7 +6,7 @@ void gc_collect();
 
 #define GCMARK(ptr) gc_mark(&(void*)ptr)
 
-#define GCNEW(ptrname, type) type ## * ptrname = (type ## *)malloc(sizeof type); \
+#define GCNEW(ptrname, type) type ## * ptrname = (type ## *)malloc(sizeof(type)); \
 gc_mark(&(void*)ptrname)
 
 #endif
