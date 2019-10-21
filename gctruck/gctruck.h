@@ -1,7 +1,12 @@
 #ifndef GCTRUCK
 #define GCTRUCK
 
-void* gc_mark(void** ptrtotrack);
+#include <stdbool.h>
+
+extern bool gccollectfullcycle;
+extern bool gcnomemory;
+
+void gc_mark(void** ptrtotrack);
 void gc_collect();
 
 #define GCMARK(ptr) gc_mark(&(void*)ptr)
